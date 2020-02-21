@@ -7,12 +7,13 @@ uppercase_alphabet = list(string.ascii_uppercase)
 def encode(message: str, shift: int) -> str:
     shifted_message = ""
     for letter in message:
-        if letter in lowercase_alphabet:
-            shifted_message += shift_letter(letter, shift, lowercase_alphabet)
-        elif letter in uppercase_alphabet:
-            shifted_message += shift_letter(letter, shift, uppercase_alphabet)
-        else:
-            shifted_message += letter
+        shifted_message += (
+            shift_letter(letter, shift, lowercase_alphabet)
+            if letter in lowercase_alphabet
+            else shift_letter(letter, shift, uppercase_alphabet)
+            if letter in uppercase_alphabet
+            else letter
+        )
     return shifted_message
 
 
