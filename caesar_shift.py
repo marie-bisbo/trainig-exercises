@@ -15,16 +15,16 @@ def decode(encoded_message: str, shift: int) -> str:
 
 def shift_letter(letter: str, shift: int) -> str:
     letter = (
-        check_case(letter, shift, LOWERCASE_ALPHABET)
+        shift_character(letter, shift, LOWERCASE_ALPHABET)
         if letter in LOWERCASE_ALPHABET
-        else check_case(letter, shift, UPPERCASE_ALPHABET)
+        else shift_character(letter, shift, UPPERCASE_ALPHABET)
         if letter in UPPERCASE_ALPHABET
         else letter
     )
     return letter
 
 
-def check_case(letter: str, shift: int, alphabet: list) -> str:
+def shift_character(letter: str, shift: int, alphabet: list) -> str:
     return alphabet[(alphabet.index(letter) + shift) % 26]
 
 
